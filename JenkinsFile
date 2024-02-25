@@ -16,7 +16,7 @@ pipeline {
         }
 stage('SonarQube analysis') {
     steps {
-        withSonarQubeEnv('YourSonarQubeServerName') {
+        withSonarQubeEnv('localhost') {
             sh 'mvn clean verify sonar:sonar'
         }
     }
@@ -31,12 +31,7 @@ stage('SonarQube analysis') {
             }
         }
 
-        stage('Static Code Analysis') {
-            steps {
-                // Run static code analysis with SonarQube
-                sh 'mvn sonar:sonar'
-            }
-        }
+        
 
         stage('Code Coverage') {
             steps {
